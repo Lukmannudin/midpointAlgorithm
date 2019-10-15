@@ -70,16 +70,29 @@ class Midpoint():
             results['x'].append(results['x'][x] * -1)
             results['y'].append(results['y'][x])
 
+        
+        ll = len(results['x']) - 1
+        dump = results['y'][ll]
 
-        for x in results['x']:
-            print(results['x'][x], results['y'][x])
+        l = 0
+        while (results['x'][ll+l]<results['x'][0]):
+            results['x'].append(results['x'][ll+l] + 1)
+            results['y'].append(results['y'][ll])
+            l += 1
+
+        # for x in results['x']:
+        #     print(results['x'][x], results['y'][x])
 
         plt.plot(results['x'],results['y'])
         plt.grid(True)
         plt.show()
 
+circleRadius = input("Masukan jari-jari lingkaran : ")
+midpointX = input("Koordinat titik tengah x (xc) : ")
+midpointY = input("Koordinat titik tengah y (yc) : ")
+
 mid = Midpoint()
-mid.setCircleRadius(1000)
-mid.setMidCircleCoordinate(0,0)
+mid.setCircleRadius(int(circleRadius))
+mid.setMidCircleCoordinate(int(midpointX),int(midpointY))
 mid.showCircleCoordinate()
 
